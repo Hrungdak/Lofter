@@ -1,0 +1,10 @@
+﻿body {
+}
+
+.form-group {
+    max-width: 400px;
+}
+
+    .form-group button:hover {
+        color: rgb(211, 70, 94)
+    }

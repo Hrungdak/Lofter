@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Lofter.Models.TenantModel
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/loginstyle.css" />
+</head>
+<body>
+    <div id="login">
+        <main>
+            <h1>Lofter Login</h1>
+            <section>
+                @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+                {
+                    <h4>Use your Account to login</h4>
+                    <div class="form-group">
+                        @*<label for="Input_Email">Email</label>
+                            <input class="form-control" type="email" required />*@
+                        @Html.LabelFor(model => model.EmailAddress)
+                        @Html.EditorFor(model => model.EmailAddress)
+                        @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @*<label for="Input_Password">Password</label>
+                            <input class="form-control " type="password" required />*@
+                        @Html.LabelFor(model => model.Password)
+                        @Html.EditorFor(model => model.Password)
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        <label class="field-validation-error">@Html.DisplayFor(model => model.ErrorMessage)</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Log in">
+                        <input type="button" value="Cancel" onclick="location.href='@Url.Action("Index", "Home")'" />
+                    </div>
+                }
+            </section>
+        </main>
+    </div>
+</body>
+</html>
