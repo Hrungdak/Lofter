@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@model Lofter.Contracts.ITitle @*Globale Object, aber alle eigenen Titel => in Interface auslagern.*@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Lofter</title>
+    <title>@Model.Title</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -26,6 +27,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login_NoIdentity</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Weather" asp-action="Index">Get Weather</a>
                         </li>
                         <partial name="_LoginPartial.cshtml" />
                     </ul>

@@ -1,0 +1,11 @@
+﻿@model Lofter.Models.WeatherViewData
+@{
+}
+
+@foreach (var weatherdata in Model.WeatherData)
+{
+    <div>
+        @*Mit @ wird auf Variable weatherdata referenziert, sonst nur plain Text.*@
+        @weatherdata
+    </div>
+}

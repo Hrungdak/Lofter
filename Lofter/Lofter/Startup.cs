@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Functionalities.Contracts;
+using Functionalities.DomainLogic;
+using Functionalities.Enums;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +27,8 @@ namespace Lofter
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
+            //var weather = new WeatherForecastDomainService("80339", DateTime.Now, TemperatureTypeEnum.Celsius, ForecastTypeEnum.easy);
+            services.AddSingleton<IWeatherForecastDomainService, WeatherForecastDomainService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
