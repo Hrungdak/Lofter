@@ -1,16 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Lofter.Contracts;
+using System.ComponentModel.DataAnnotations;
 
 namespace Lofter.Models
 {
-    public class TenantModel
+    public class UserLoginViewData : ITitle
     {
-        public int TenantID { get; set; }
+        public string Title { get; set; }
+
+        public int UserId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         [Required(ErrorMessage = "This field is required.")]
         public string EmailAddress { get; set; }
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
 
         [Required(ErrorMessage = "This field is required.")]
         [DataType(DataType.Password)]

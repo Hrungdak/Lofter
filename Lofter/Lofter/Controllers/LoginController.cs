@@ -7,22 +7,27 @@ namespace Lofter.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(new UserLoginViewData { Title = "User Login" });
         }
 
         [HttpPost]
-        public IActionResult Authorize(TenantModel tenant)
+        public IActionResult Authorize(UserLoginViewData user)
         {
+            // Question: Validation Controller? -> seperate from Controller
+            // 1. bei LoginButton Validation Controller aufrufen und den User als Parameter übergeben (wie hier)
+            // 2. Im Validation Controller wird Validierung durchgeführt
+            // 3. Falls erfolgreich -> Login Controller aufrufen
+
             //ToDo: Create User Database and look if User is registered via LINQ(?)
-            TenantModel test_Tenant = new TenantModel { EmailAddress = "Test@web.de", Password = "Test123" };
-            if (tenant.EmailAddress != test_Tenant.EmailAddress ||
-                tenant.Password != test_Tenant.Password)
+            UserLoginViewData test_user = new UserLoginViewData { EmailAddress = "Test@web.de", Password = "123" };
+            if (user.EmailAddress != test_user.EmailAddress ||
+                user.Password != test_user.Password)
             {
-                if (tenant.EmailAddress != null || tenant.Password != null)
+                if (user.EmailAddress != null && user.Password != null)
                 {
-                    tenant.ErrorMessage = "Wrong Email or Password";
+                    user.ErrorMessage = "Wrong Email or Password";
                 }
-                return View("Index", tenant);
+                return View("Index", user);
             }
             else
             {
